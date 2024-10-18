@@ -3,9 +3,8 @@ let links = [];
 // הוספת קישור חדש
 function addLink() {
   const input = document.getElementById('link-input');
-  const newLink = input.value;
+  const newLink = input.value.trim();
   if (newLink) {
-    // שלח את הקישור לשרת
     fetch('save_links.php', {
       method: 'POST',
       headers: {
@@ -16,11 +15,11 @@ function addLink() {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        fetchLinks(); // עדכן את רשימת הקישורים מהשרת
+        fetchLinks(); // עדכון רשימת הקישורים
       }
     });
 
-    input.value = ''; // נקה את השדה לאחר ההוספה
+    input.value = ''; // נקה את שדה הטקסט לאחר ההוספה
   }
 }
 
@@ -54,15 +53,15 @@ function updateLinks() {
 // הסרת קישור
 function removeLink(index) {
   links.splice(index, 1);
-  // שמור את הרשימה המעודכנת בשרת
+  // שליחת הרשימה המעודכנת לשרת
   fetch('save_links.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ links: links }) // שלח את הרשימה המעודכנת לשרת
+    body: JSON.stringify({ links: links }) 
   }).then(() => {
-    updateLinks(); // עדכן את הרשימה המוצגת
+    updateLinks(); // עדכון הרשימה המוצגת
   });
 }
 
