@@ -7,11 +7,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>ניהול קישורים</h1>
-  <div id="link-container"></div>
+  <div class="container">
+    <h1>ניהול קישורים</h1>
+    
+    <div class="input-section">
+      <input type="text" id="link-input" placeholder="הוסף קישור חדש כאן">
+      <button class="add-button" onclick="addLink()">הוסף קישור</button>
+    </div>
 
-  <input type="text" id="link-input" placeholder="הוסף קישור כאן">
-  <button onclick="addLink()">הוסף קישור</button>
+    <div id="link-container" class="link-container"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
