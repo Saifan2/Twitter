@@ -1,10 +1,9 @@
 <?php
-// קובץ JSON עם רשימת הקישורים
-$file = 'links.json';
+$file = 'links.txt';
 
-// אם הקובץ קיים, שלח את תוכנו
+// בדוק אם הקובץ קיים וקרא ממנו את הקישורים
 if (file_exists($file)) {
-    $links = json_decode(file_get_contents($file), true);
+    $links = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES); // קריאה לקובץ ללא שורות ריקות
     echo json_encode(['links' => $links]);
 } else {
     echo json_encode(['links' => []]);
